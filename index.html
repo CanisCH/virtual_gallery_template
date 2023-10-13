@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <!--
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
+    <title>Examples • Castle</title>
+    <script src="js/aframe.min.js"></script>
+    <script src="js/bundle.js"></script>
+    <script src="js/aframe-environment-component.min.js"></script>
+  </head>
+<body>
+    <a-scene environment="preset: tron; skyType: color; skyColor: #CCC; lighting: distant; lightPosition: 0 1 1">
+      <a-assets>
+        <a-asset-item id="navmesh" src="mesh/room 1 boundary.glb"></a-asset-item>
+        <a-asset-item id="room" src="mesh/room 1.glb"></a-asset-item>
+      </a-assets>
+
+      <!-- Player. -->
+      <a-entity id="rig"
+                movement-controls="constrainToNavMesh: true;
+                                   controls: checkpoint, gamepad, trackpad, keyboard, nipple;"
+                position="0 0 8">
+        <a-entity camera
+                  position="0 1.6 0"
+                  look-controls="pointerLockEnabled: true">
+          <a-cursor></a-cursor>
+        </a-entity>
+      </a-entity>
+
+      <!-- Nav mesh. -->
+      <a-entity nav-mesh
+                normal-material
+                visible="false"
+                position="0 0 0"
+                scale="3 3 3"
+                gltf-model="#navmesh"></a-entity>
+
+      <!-- Scene. -->
+      <a-entity position="0 -0.01 0"
+                scale="3 3 3"
+                gltf-model="#room">
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
